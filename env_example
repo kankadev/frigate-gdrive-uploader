@@ -1,0 +1,16 @@
+# rename this file to ".env" and fill in the values
+
+# Frigate URL with protocol and port
+FRIGATE_URL=http://192.168.0.11:5000
+
+# Upload clips of the last x days
+DAYS=3
+
+# Upload directory in Google Drive, will be created automatically in Google Drive
+UPLOAD_DIR=frigate
+
+# Google Drive
+CREDENTIALS_FILE=credentials/google_drive_credentials.json
+
+# TOKEN_FILE will be created automatically after first run
+TOKEN_FILE=credentials/token.json
