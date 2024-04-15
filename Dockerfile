@@ -9,11 +9,10 @@ RUN python setup.py
 # Installiere Cron
 RUN apt-get update && apt-get -y install cron
 
-# Füge das Cron-Skript hinzu
-COPY run_script.sh /etc/periodic/2min/run_script.sh
+COPY run_script.sh /usr/src/app/run_script.sh
+RUN chmod +x /usr/src/app/run_script.sh
 
-# Erstelle den Cronjob
-RUN (crontab -l ; echo "*/2 * * * * /etc/periodic/2min/run_script.sh") | crontab -
+RUN (crontab -l ; echo "*/2 * * * * /usr/src/app/run_script.sh >> /var/log/cron.log 2>&1") | crontab -
 
-# Führe den Cron-Daemon aus
+
 CMD ["cron", "-f"]
