@@ -4,6 +4,9 @@ WORKDIR /usr/src/app
 
 COPY . .
 
+RUN mkdir -p /var/log && touch /var/log/cron.log && chmod 0666 /var/log/cron.log
+
+
 RUN python setup.py
 
 # Installiere Cron
