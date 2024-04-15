@@ -6,17 +6,21 @@ from datetime import datetime
 import requests
 from dotenv import load_dotenv
 from googleapiclient.http import MediaIoBaseUpload
+from datetime import datetime
+import pytz
 
 load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 UPLOAD_DIR = os.getenv('UPLOAD_DIR')
+TIMEZONE = os.getenv('TIMEZONE', 'Europe/Istanbul')
 
 
 def generate_filename(camera_name, start_time, event_id):
-    timestamp = datetime.fromtimestamp(start_time)
-    return f"{timestamp.strftime('%Y-%m-%d-%H-%M-%S')}__{camera_name}__{event_id}.mp4"
+    utc_time = datetime.fromtimestamp(start_time, pytz.utc)
+    local_time = utc_time.astimezone(pytz.timezone(TIMEZONE))
+    return f"{local_time.strftime('%Y-%m-%d-%H-%M-%S')}__{camera_name}__{event_id}.mp4"
 
 
 def find_or_create_folder(service, name, parent_id=None):
