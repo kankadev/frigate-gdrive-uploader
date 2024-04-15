@@ -16,6 +16,7 @@ Transfers all Frigate clips that have not yet been uploaded to Google Drive.
 
 
 # Known opportunities for improvement
+- "real time" upload of clips instead of cronjob
 - log rotation
 - clean up SQLite database automatically frequently
 - push notifications in case of errors (e.g. telegram bot, Discord, Mattermost, Gotify, etc.)

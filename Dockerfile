@@ -4,13 +4,9 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN mkdir -p /var/log && touch /var/log/cron.log && chmod 0666 /var/log/cron.log
-
-
 RUN python setup.py
-
-# Installiere Cron
 RUN apt-get update && apt-get -y install cron
+RUN mkdir -p /var/log && touch /var/log/cron.log && chmod 0666 /var/log/cron.log
 
 COPY run_script.sh /usr/src/app/run_script.sh
 RUN chmod +x /usr/src/app/run_script.sh
