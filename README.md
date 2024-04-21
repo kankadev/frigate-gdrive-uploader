@@ -2,6 +2,8 @@
 Transfers all Frigate clips that have not yet been uploaded to Google Drive.            
 
 
+Use this project https://github.com/kankadev/frigate-gdrive-instant-uploader instead if you want to upload clips instantly after they have been recorded by Frigate.
+
 # Requirements
 - python 3.8
 
